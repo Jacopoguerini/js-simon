@@ -12,7 +12,7 @@ var numbersToGuess = [];
 var playerNumbers = [];
 var randomEnd = 1000;
 // tempo di attesa in secondi
-var waitingTime = 2;
+var waitingTime = 5;
 var score = 0;
 var correctList = [];
 
@@ -40,7 +40,10 @@ function milliSecond(time) {
 // funzione di GIOCO: inserimento numeri da parte dell'utente
 function getUserNumbers() {
     for (var i = 0; i < numberList; i++) {
-        var num = parseInt(prompt("Inserisci qui un numero che ti ricordi di quelli visti poco fa:"));
+        do {
+            var num = parseInt(prompt("Inserisci qui un numero che ti ricordi di quelli visti poco fa:"));
+        } while(arrayPresence(num, playerNumbers) || num < 1 || num > randomNumber);
+        
         playerNumbers.push(num);
 
         // verifica dei numeri e aumento punteggio
@@ -90,11 +93,13 @@ var countStart = waitingTime;
 var countDown = setInterval( function() {
     
     if (countStart == 0) {
+        alert("RIcarica la pagina e riprova!");
         clearInterval(countDown);
-        document.getElementById("countdown").innerHTML = "<p>Via!</p>"
     } else {
         countStart--;
+        document.getElementById("countdown").innerHTML = "<p>" + countStart + "</p>";
     }
+
 }, 1000);
 
 //Gioco
