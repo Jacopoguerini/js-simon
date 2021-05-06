@@ -86,15 +86,16 @@ alert("Questi sono i tuoi numeri:\n" + numbersToGuess.toString().replace(/,/g, "
 document.getElementById("countdown").innerHTML = "<p>" + waitingTime + "</p>"
 
 // Countdown 
+var countStart = waitingTime;
 var countDown = setInterval( function() {
     
-    if (waitingTime == -1) {
+    if (countStart == 0) {
         clearInterval(countDown);
         document.getElementById("countdown").innerHTML = "<p>Via!</p>"
     } else {
-        waitingTime--;
+        countStart--;
     }
-}, milliSecond(waitingTime));
+}, 1000);
 
 //Gioco
 var attempts = setTimeout( function() {
