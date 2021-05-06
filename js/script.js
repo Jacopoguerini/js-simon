@@ -6,10 +6,12 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 // variabili
 // numero di numeri casuali
 var numberList = 5;
+// array dei numeri casuali
 var numbersToGuess = [];
-var numbersToGuessString;
+// arrai numeri giocatore
+var playerNumbers = [];
 var randomEnd = 1000;
-var time = 5000;
+var waitingTime = 5000;
 
 // Funzioni
 // funzione per generare numeri casuali
@@ -44,6 +46,18 @@ console.log("Lista di numeri da ricordare: ", numbersToGuess);
 // Alert espone 5 numeri casuali
 alert("Ciao!\nPremi invio per far apparire " + numberList + " numeri.\nSe vuoi vincere, ricordali tutti!\nVIA!");
 
-alert("Questi sono i tuoi numeri:\n" + numbersToGuess.toString().replace(/,/g, ", ") + "\nProva a ricordarli tutti!\nPremi invio e hai " + (time / 1000) + " secondi prima di poter testare la tua memoria!");
+alert("Questi sono i tuoi numeri:\n" + numbersToGuess.toString().replace(/,/g, ", ") + "\nProva a ricordarli tutti!\nPremi invio e hai " + (waitingTime / 1000) + " secondi prima di poter testare la tua memoria!");
 
-var attempt = setInterval()
+
+//Gioco
+var attempt = setTimeout( function () {
+    var num;
+    for (var i = 0; i < numberList; i++) {
+        num = parseInt(prompt("Inserisci qui un numero che ti ricordi di quelli visti poco fa:"));
+        playerNumbers.push(num);
+
+    }
+    console.log(playerNumbers);
+}, waitingTime);
+
+//verifica numeri e condizizoni di vittoria
