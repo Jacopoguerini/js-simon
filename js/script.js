@@ -12,7 +12,7 @@ var numbersToGuess = [];
 var playerNumbers = [];
 var randomEnd = 1000;
 // tempo di attesa in secondi
-var waitingTime = 5;
+var waitingTime = 30;
 var score = 0;
 var correctList = [];
 
@@ -93,7 +93,7 @@ var countStart = waitingTime;
 var countDown = setInterval( function() {
     
     if (countStart == 0) {
-        alert("RIcarica la pagina e riprova!");
+        alert("Ricarica la pagina e riprova!");
         clearInterval(countDown);
     } else {
         countStart--;
